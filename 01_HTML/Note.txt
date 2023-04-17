@@ -1,0 +1,5 @@
+Yêu cầu thiết kế trang web theo mẫu (có thể phát triển thêm nếu muốn)
+
+Trong file nén bao gồm ảnh chụp màn hình trang web cần thiết kế (thư mục capture). Các hình ảnh có thể lấy trong thư mục imgs hoặc em có thể tìm hình ảnh tự chọn.
+
+Bài tập này chỉ yêu cầu thiết kế về mặt UI, việc bấm các nút sẽ thực hiện thao tác gì thì tạm thời chưa yêu cầu.
