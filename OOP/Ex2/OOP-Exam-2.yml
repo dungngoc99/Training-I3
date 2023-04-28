@@ -1,0 +1,37 @@
+/*
+Hero:
+    properies:
+    - health: Máu bị giảm/tăng dựa vào kĩ năng thi triển hoặc bị vị tướng khác thi triển lên
+    - mana: sử dụng để xuất chiêu, tùy chiêu sẽ có số lượng mana tiêu hao khác nhau, ko đủ mana sẽ ko sử dụng được chiêu
+    
+    methods:
+    - getHit(action, source): bị đánh từ vị trướng "source"
+    - cast(skillName, targets):  thi triển 1 kĩ năng với tên là "skillName" tới các vị tướng trong array "targets"
+                                 mỗi vị tướng sẽ có 4 skill cơ bản là Q, W, E, R được định nghĩa ở mỗi loại tướng khác nhau
+=======================================
+Hero A: health 100, mana 20
+    - Q: + giảm 15 máu của đối phương trúng phải
+         + mana: 2
+    - W: + hồi 10 máu, 5 mana
+         + mana: 3
+    - E: + giảm 30 máu của đối phương đầu tiên trúng phải, 
+         + mana: 5
+    - R: + giảm 30 máu của đối phương trúng phải
+         + mana: 5
+
+Hero A: health 80, mana 20
+    - Q: + giảm 20 máu của đối phương trúng phải
+         + mana: 3
+    - W: + giảm 10 máu của 2 đối phương đâu tiên trúng phải
+         + mana: 3
+    - E: + hồi 20 máu, 5 mana, 
+         + mana: 5
+    - R: + giảm 50 máu của đối phương đầu tiên trúng phải, hồi full mana
+         + mana: 0
+
+==============================================
+Chương trình:
+- Khởi tạo:
+    -- bổ sung sau
+
+*/

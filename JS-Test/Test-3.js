@@ -11,11 +11,12 @@
   d.myArray.push(x);
   c = c.filter((i) => i == d.myArray);
   c[0][0].value = "hello";
-  //a = [{"hello"}]
-  //c=[[{"hello"}]]
+  console.log(c);
+  //a = [{value: 'hello'}]
+  //c=[[{value: 'hello}]]
   //d.myArray == c[0] => true
   //x.value == d.myString? => true
-  //how many objects? => 1
+  //how many objects? => 2
 }
 
 /*EX2*/
