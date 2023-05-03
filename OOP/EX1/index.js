@@ -11,11 +11,11 @@ class Animal {
   calories() {
     return this.calo + this.eat;
   }
-  realTimeRunning(x) {
-    if (this.calories() <= x) {
+  realTimeRunning(time) {
+    if (this.calories() <= time) {
       return this.calories();
     } else {
-      return x;
+      return time;
     }
   }
   calcDistance(x) {
@@ -37,11 +37,6 @@ let john = new Animal("human", "John", "asian", 20, 7, 5, 5);
 let eto = new Animal("human", "Eto", "african", 50, 10, 5, 5);
 
 let time = 10;
-
-console.log(micky.calcDistance(time));
-console.log(milu.calcDistance(time));
-console.log(john.calcDistance(time));
-console.log(eto.calcDistance(time));
 
 let arr = [micky, milu, john, eto];
 let max = arr[0].calcDistance(time);
