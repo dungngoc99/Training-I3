@@ -5,7 +5,6 @@ Hero:
     - mana: sử dụng để xuất chiêu, tùy chiêu sẽ có số lượng mana tiêu hao khác nhau, ko đủ mana sẽ ko sử dụng được chiêu
     
     methods:
-    - getHit(action, source): bị đánh từ vị trướng "source"
     - cast(skillName, targets):  thi triển 1 kĩ năng với tên là "skillName" tới các vị tướng trong array "targets"
                                  mỗi vị tướng sẽ có 4 skill cơ bản là Q, W, E, R được định nghĩa ở mỗi loại tướng khác nhau
 =======================================
@@ -19,7 +18,7 @@ Hero A: health 100, mana 20
     - R: + giảm 30 máu của đối phương trúng phải
          + mana: 5
 
-Hero A: health 80, mana 20
+Hero B: health 80, mana 20
     - Q: + giảm 20 máu của đối phương trúng phải
          + mana: 3
     - W: + giảm 10 máu của 2 đối phương đâu tiên trúng phải

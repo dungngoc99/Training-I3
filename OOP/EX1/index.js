@@ -1,3 +1,4 @@
+let calo = 0;
 class Animal {
   constructor(spiece, name, classify, age, speed, calo, eat) {
     this.spiece = spiece;
@@ -18,16 +19,16 @@ class Animal {
       return time;
     }
   }
-  calcDistance(x) {
+  calcDistance(time) {
     if (this.age <= 40 && this.age >= 30) {
       this.speed -= 1;
-      return this.speed * this.realTimeRunning(x);
+      return this.speed * this.realTimeRunning(time);
     }
     if (this.age >= 41) {
       this.speed -= 2;
-      return this.speed * this.realTimeRunning(x);
+      return this.speed * this.realTimeRunning(time);
     } else {
-      return this.speed * this.realTimeRunning(x);
+      return this.speed * this.realTimeRunning(time);
     }
   }
 }

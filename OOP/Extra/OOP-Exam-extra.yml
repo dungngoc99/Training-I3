@@ -1,0 +1,53 @@
+/*
+Animal:
+    - name
+    - age
+    - calories: ban đầu là 0
+    - distance: ban đầu là 0
+
+    - run:
+        - đốt calories: giảm calories tuy theo loai
+        Neu calories <= 0 thi ko the di chuyen
+        - di chuyển: tăng distance theo tốc độ, 
+            tuy nhiên tùy theo độ tuổi mà tốc độ bị giảm, cụ thể:
+                - tuổi từ 30 tới 40: giảm 1
+                - tuổi từ 41: giảm 2
+    - eat:
+        - tăng calories
+
+Dog:
+    - eat: tăng 10 calories
+    - tốc độ: 
+        - corgi: 5
+        - chihuahua: 6
+    - burn calories: 
+        - corgi: 5
+        - chihuahua: 6
+
+Human:
+    - calories: ban đầu là 5
+    - eat: tăng 5 calories
+    - tốc độ:
+        - African: 10
+        - Asian: 7
+    - burn calories:
+        - African: 10
+        - Asian: 7
+
+
+Viết chương trình khởi tạo:
+    - micky: Dog, tên Micky, loại corgi, 20 tuổi
+    - milu: Dog, Milu, z, 35 tuổi
+    - người: Human, John, asian, 15 tuổi
+    - người: Human, Eto, affrica, 50 tuổi
+# Cho 4 đối tượng này chạy trong 10 lan, 
+eat
+eat
+run
+eat
+run
+run
+eat
+//sắp xếp thứ từ tăng dần xem ai chạy được dài nhất
+
+*/
