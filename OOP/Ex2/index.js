@@ -8,7 +8,12 @@ class Hero {
   btnW() {}
   btnE() {}
   btnR() {}
-  cast() {}
+  cast(skillName, targets) {
+    if (skillName == "Q") {
+      this.btnQ();
+      this.mana -= 2;
+    }
+  }
 }
 class HeroA extends Hero {
   constructor(health, mana) {}
