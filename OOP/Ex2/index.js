@@ -1,37 +1,57 @@
+const targets = [];
 class Hero {
   constructor(health, mana) {
     this.health = health;
     this.mana = mana;
   }
-
-  btnQ(heroTarget) {}
-  btnW(heroTarget) {}
-  btnE(heroTarget) {}
-  btnR(heroTarget) {}
+  btnQ() {}
+  btnW() {}
+  btnE() {}
+  btnR() {}
+  cast() {}
 }
 class HeroA extends Hero {
   constructor(health, mana) {}
-  btnQ(heroTarget) {
-    heroTarget.health -= 15;
+  btnQ() {
+    targets.forEach((targets) => {
+      targets.health -= 15;
+    });
     this.mana -= 2;
   }
-  btnW(heroTarget) {
+  btnW() {
     this.health += 10;
     this.mana += 2;
   }
-  btnE(heroTarget) {
-    heroTarget.health += 30;
+  btnE() {
+    targets[0].health -= 30;
     this.mana -= 5;
   }
-  btnR(heroTarget) {
-    heroTarget.health -= 30;
+  btnR() {
+    targets.forEach((targets) => {
+      targets.health -= 30;
+    });
     this.mana -= 5;
   }
 }
 class HeroB extends Hero {
-  constructor(health, mana) {}
-  btnQ() {}
+  constructor(health, mana) {
+    let fullMana = this.mana;
+  }
+  btnQ() {
+    targets.forEach((targets) => {
+      targets.health -= 20;
+    });
+    this.mana -= 3;
+  }
+  btnW() {
+    targets[0].health -= 10;
+    this.mana -= 3;
+  }
+  btnE() {
+    this.health += 20;
+  }
+  btnR() {
+    targets[0].health -= 50;
+    this.mana = fullMana;
+  }
 }
-const target = [];
-
-const heroA = new HeroA(100, 20);
