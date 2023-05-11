@@ -1,82 +1,73 @@
-let calories = 0;
-let eat = 0;
+let time;
 class Animal {
-  constructor(name, age, spieces) {
+  constructor(name, age, initialCalories) {
     this.name = name;
     this.age = age;
-    this.spieces = spieces;
+    this.calories = initialCalories;
+    this.distance = 0;
+  }
+  speed() {}
+  getCaloriesBurnt() {}
+  eat() {}
+  run() {
+    let runTime = 0;
+    this.calories += this.eat();
+    while (this.calories > 0 && runTime < time) {
+      runTime += 1;
+      this.calories -= this.getCaloriesBurnt();
+    }
+    return (this.distance += runTime * this.speed());
   }
 }
 
 class Dog extends Animal {
-  constructor(name, age, spieces, eat, speed) {
-    super(name, age, spieces);
-    this.calories = eat;
-    this.speed = speed;
+  constructor(name, age, type) {
+    super(name, age, 0);
+    this.type = type;
   }
   speed() {
-    if ((this.spieces = "corgi")) {
+    if ((this.type = "corgi")) {
       return 5;
     }
-    if ((this.spieces = "chihuahua")) {
+    if ((this.type = "chihuahua")) {
       return 6;
     }
   }
-  realTimeRunning(time) {
-    if (this.calories < time) {
-      return this.calories;
-    } else {
-      return time;
+  getCaloriesBurnt() {
+    if ((this.type = "corgi")) {
+      return 5;
+    }
+    if ((this.type = "chihuahua")) {
+      return 6;
     }
   }
-  calcDistance(time) {
-    if (this.age <= 40 && this.age >= 30) {
-      this.speed -= 1;
-      return this.speed * this.realTimeRunning(time);
-    }
-    if (this.age >= 41) {
-      this.speed -= 2;
-      return this.speed * this.realTimeRunning(time);
-    } else {
-      return this.speed * this.realTimeRunning(time);
-    }
+  eat() {
+    return 10;
   }
 }
 class Human extends Animal {
-  constructor(name, age, spieces, calories, eat, speed) {
-    super(name, age, spieces);
-    this.calories = calories;
-    this.eat = eat;
-    this.speed = speed;
+  constructor(name, age, type) {
+    super(name, age, 5);
+    this.type = type;
   }
   speed() {
-    if ((this.spieces = "asian")) {
+    if ((this.type = "Asian")) {
       return 7;
     }
-    if ((this.spieces = "african")) {
+    if ((this.type = "African")) {
       return 10;
     }
   }
-
-  realTimeRunning(time) {
-    this.calories += this.eat;
-    if (this.calories < time) {
-      return this.calories;
-    } else {
-      return time;
+  getCaloriesBurnt() {
+    if ((this.type = "Asian")) {
+      return 7;
+    }
+    if ((this.type = "African")) {
+      return 10;
     }
   }
-  calcDistance(time) {
-    if (this.age <= 40 && this.age >= 30) {
-      this.speed -= 1;
-      return this.speed * this.realTimeRunning(time);
-    }
-    if (this.age >= 41) {
-      this.speed -= 2;
-      return this.speed * this.realTimeRunning(time);
-    } else {
-      return this.speed * this.realTimeRunning(time);
-    }
+  eat() {
+    return 5;
   }
 }
 
@@ -84,8 +75,6 @@ let micky = new Dog("Micky", 20, "corgi", 10, 5);
 let milu = new Dog("Milu", 35, "chihuahua", 10, 6);
 let john = new Human("John", 15, "asian", 5, 5, 7);
 let eto = new Human("Eto", 50, "african", 5, 5, 10);
-
-let time = 10;
 
 const arr = [micky, milu, john, eto];
 let max = arr[0].calcDistance(time);

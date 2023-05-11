@@ -6,8 +6,8 @@ Animal:
     - distance: ban đầu là 0
 
     - run:
-        - đốt calories: giảm calories mỗi giây
-        - di chuyển: tăng distance lên mỗi giây theo tốc độ, 
+        - đốt calories: giảm calories mỗi lần
+        - di chuyển: tăng distance lên mỗi lần theo tốc độ, 
             tuy nhiên tùy theo độ tuổi mà tốc độ bị giảm, cụ thể:
                 - tuổi từ 30 tới 40: giảm 1
                 - tuổi từ 41: giảm 2
@@ -19,11 +19,17 @@ Dog:
     - tốc độ: 
         - corgi: 5
         - chihuahua: 6
+    - đốt calo:
+       - corgi: 5
+       - chihuahua: 6      
 
 Human:
     - calories: ban đầu là 5
     - eat: tăng 5 calories
     - tốc độ:
+        - Africa: 10
+        - Asian: 7
+    - đốt calo
         - Africa: 10
         - Asian: 7
 
@@ -33,5 +39,5 @@ Viết chương trình khởi tạo:
     - milu: Dog, Milu, chihuahua, 35 tuổi
     - người: Human, John, asian, 15 tuổi
     - người: Human, Eto, african, 50 tuổi
-Cho 4 đối tượng này chạy trong 10 giây, sắp xếp thứ từ tăng dần xem ai chạy được dài nhất
+Cho 4 đối tượng này chạy trong 10 lần, sắp xếp thứ từ tăng dần xem ai chạy được dài nhất
 */
