@@ -5,18 +5,22 @@ class Animal {
     this.calories = initialCalories;
     this.distance = 0;
   }
-  speed() {}
-  getCaloriesBurnt() {}
-  getCaloriesPerEat() {}
+  speed() {
+    return 0;
+  }
+  getCaloriesBurnt() {
+    return 0;
+  }
+  getCaloriesPerEat() {
+    return 0;
+  }
   eat() {
     this.calories += this.getCaloriesPerEat();
   }
   run() {
     this.calories -= this.getCaloriesBurnt();
     if (this.calories > 0) {
-      this.distance = this.speed;
-    } else {
-      return 0;
+      this.distance += this.speed();
     }
   }
 }
