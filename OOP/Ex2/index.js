@@ -12,6 +12,7 @@ class Hero {
     if (skillName == "Q") {
       this.btnQ();
       this.mana -= 2;
+
     }
   }
 }
@@ -20,8 +21,9 @@ class HeroA extends Hero {
   btnQ() {
     targets.forEach((targets) => {
       targets.health -= 15;
-    });
+    });git
     this.mana -= 2;
+    
   }
   btnW() {
     this.health += 10;
