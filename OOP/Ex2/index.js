@@ -8,54 +8,118 @@ class Hero {
   btnW() {}
   btnE() {}
   btnR() {}
-  cast(skillName, targets) {
-    if (skillName == "Q") {
-      this.btnQ();
-      this.mana -= 2;
 
+  cast(skillName, targets) {
+    let actionBySkill;
+    const fullHealth = this.health;
+    const fullMana = this.mana;
+    if (skillName == "Q") {
+      actionBySkill = this.btnQ();
     }
+    if (skillName == "W") {
+      actionBySkill = this.btnW();
+    }
+    if (skillName == "E") {
+      actionBySkill = this.btnE();
+    }
+    if (skillName == "") {
+      actionBySkill = this.btnR();
+    }
+    this.mana -= actionBySkill.mana;
+    actionBySkill.action(targets);
   }
 }
+
 class HeroA extends Hero {
   constructor(health, mana) {}
   btnQ() {
-    targets.forEach((targets) => {
-      targets.health -= 15;
-    });git
-    this.mana -= 2;
-    
+    return {
+      mana: 2,
+      action: function (targets) {
+        targets.forEach((target) => {
+          target.health -= 15;
+        });
+      },
+    };
   }
   btnW() {
-    this.health += 10;
-    this.mana += 2;
+    return {
+      mana: 3,
+      action: function () {
+        if (this.health < fullHealth - 10) {
+          this.health += 10;
+        }
+        if (this.health >= fullHealth - 10) {
+          this.health = fullHealth;
+        }
+        if (this.mana < fullMana - 5) {
+          this.mana += 5;
+        }
+        if (this.man >= fullMana - 5) {
+          this.mana = fullMana;
+        }
+      },
+    };
   }
   btnE() {
-    targets[0].health -= 30;
-    this.mana -= 5;
+    return {
+      mana: 5,
+      action: function (targets) {
+        targets[0].health -= 30;
+      },
+    };
   }
   btnR() {
-    targets.forEach((targets) => {
-      targets.health -= 30;
-    });
-    this.mana -= 5;
+    return {
+      mana: 5,
+      action: function (targets) {
+        targets.forEach((target) => {
+          target.health -= 30;
+        });
+      },
+    };
   }
 }
+
 class HeroB extends Hero {
-  constructor(health, mana) {
-    let fullMana = this.mana;
-  }
+  constructor(health, mana) {}
   btnQ() {
-    targets.forEach((targets) => {
-      targets.health -= 20;
-    });
-    this.mana -= 3;
+    return {
+      mana: 3,
+      action: function (targets) {
+        targets.forEach((target) => {
+          target.health -= 20;
+        });
+      },
+    };
   }
   btnW() {
-    targets[0].health -= 10;
-    this.mana -= 3;
+    return {
+      mana: 3,
+      action: function (targets) {
+        targets[0].health -= 10;
+        targets[1].health -= 10;
+      },
+    };
   }
   btnE() {
-    this.health += 20;
+    return {
+      mana: 5,
+      action: function () {
+        if (this.health < fullHealth - 10) {
+          this.health += 10;
+        }
+        if (this.health >= fullHealth - 10) {
+          this.health = fullHealth;
+        }
+        if (this.mana < fullMana - 5) {
+          this.mana += 5;
+        }
+        if (this.man >= fullMana - 5) {
+          this.mana = fullMana;
+        }
+      },
+    };
   }
   btnR() {
     targets[0].health -= 50;
