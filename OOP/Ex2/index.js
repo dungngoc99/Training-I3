@@ -3,6 +3,8 @@ class Hero {
   constructor(health, mana) {
     this.health = health;
     this.mana = mana;
+    this.health = fullHealth;
+    this.mana = fullMana;
   }
   btnQ() {}
   btnW() {}
@@ -11,8 +13,6 @@ class Hero {
 
   cast(skillName, targets) {
     let actionBySkill;
-    const fullHealth = this.health;
-    const fullMana = this.mana;
     if (skillName == "Q") {
       actionBySkill = this.btnQ();
     }
@@ -46,17 +46,17 @@ class HeroA extends Hero {
     return {
       mana: 3,
       action: function () {
-        if (this.health < fullHealth - 10) {
+        if (this.health < this.fullHealth - 10) {
           this.health += 10;
         }
-        if (this.health >= fullHealth - 10) {
-          this.health = fullHealth;
+        if (this.health >= this.fullHealth - 10) {
+          this.health = this.fullHealth;
         }
-        if (this.mana < fullMana - 5) {
+        if (this.mana < this.fullMana - 5) {
           this.mana += 5;
         }
-        if (this.man >= fullMana - 5) {
-          this.mana = fullMana;
+        if (this.man >= this.fullMana - 5) {
+          this.mana = this.fullMana;
         }
       },
     };
@@ -106,23 +106,28 @@ class HeroB extends Hero {
     return {
       mana: 5,
       action: function () {
-        if (this.health < fullHealth - 10) {
+        if (this.health < this.fullHealth - 10) {
           this.health += 10;
         }
-        if (this.health >= fullHealth - 10) {
-          this.health = fullHealth;
+        if (this.health >= this.fullHealth - 10) {
+          this.health = this.fullHealth;
         }
-        if (this.mana < fullMana - 5) {
+        if (this.mana < this.fullMana - 5) {
           this.mana += 5;
         }
-        if (this.man >= fullMana - 5) {
-          this.mana = fullMana;
+        if (this.man >= this.fullMana - 5) {
+          this.mana = this.fullMana;
         }
       },
     };
   }
   btnR() {
-    targets[0].health -= 50;
-    this.mana = fullMana;
+    return {
+      mana: 0,
+      action: function () {
+        targets[0].health -= 50;
+        this.mana = this.fullMana;
+      },
+    };
   }
 }
