@@ -3,8 +3,8 @@ class Hero {
   constructor(health, mana) {
     this.health = health;
     this.mana = mana;
-    this.health = fullHealth;
-    this.mana = fullMana;
+    this.fullHealth = health;
+    this.fullMana = mana;
   }
   btnQ() {}
   btnW() {}
@@ -13,25 +13,29 @@ class Hero {
 
   cast(skillName, targets) {
     let actionBySkill;
-    if (skillName == "Q") {
-      actionBySkill = this.btnQ();
+    if (this.mana - actionBySkill.mana > 0) {
+      if (skillName == "Q") {
+        actionBySkill = this.btnQ();
+      }
+      if (skillName == "W") {
+        actionBySkill = this.btnW();
+      }
+      if (skillName == "E") {
+        actionBySkill = this.btnE();
+      }
+      if (skillName == "") {
+        actionBySkill = this.btnR();
+      }
+      this.mana -= actionBySkill.mana;
+      actionBySkill.action(targets);
     }
-    if (skillName == "W") {
-      actionBySkill = this.btnW();
-    }
-    if (skillName == "E") {
-      actionBySkill = this.btnE();
-    }
-    if (skillName == "") {
-      actionBySkill = this.btnR();
-    }
-    this.mana -= actionBySkill.mana;
-    actionBySkill.action(targets);
   }
 }
 
 class HeroA extends Hero {
-  constructor(health, mana) {}
+  constructor() {
+    super(100, 20);
+  }
   btnQ() {
     return {
       mana: 2,
@@ -65,7 +69,9 @@ class HeroA extends Hero {
     return {
       mana: 5,
       action: function (targets) {
-        targets[0].health -= 30;
+        if (targets.lenght > 0) {
+          targets[0].health -= 30;
+        }
       },
     };
   }
@@ -82,7 +88,9 @@ class HeroA extends Hero {
 }
 
 class HeroB extends Hero {
-  constructor(health, mana) {}
+  constructor() {
+    super(80, 20);
+  }
   btnQ() {
     return {
       mana: 3,
@@ -97,8 +105,13 @@ class HeroB extends Hero {
     return {
       mana: 3,
       action: function (targets) {
-        targets[0].health -= 10;
-        targets[1].health -= 10;
+        if (targets.lenght == 1) {
+          targets[0].health -= 10;
+        }
+        if (targets.lenght >= 2) {
+          targets[0].health -= 10;
+          targets[1].health -= 10;
+        }
       },
     };
   }
@@ -125,8 +138,12 @@ class HeroB extends Hero {
     return {
       mana: 0,
       action: function () {
-        targets[0].health -= 50;
-        this.mana = this.fullMana;
+        if (targets.lenght > 0) {
+          if (targets.length > 0) {
+            targets[0].health -= 50;
+            this.mana = this.fullMana;
+          }
+        }
       },
     };
   }
