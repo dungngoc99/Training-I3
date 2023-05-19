@@ -1,4 +1,5 @@
 const targets = [];
+const len = targets.length;
 class Hero {
   constructor(health, mana) {
     this.health = health;
@@ -12,8 +13,8 @@ class Hero {
   btnR() {}
 
   cast(skillName, targets) {
-    let actionBySkill;
     if (this.mana - actionBySkill.mana > 0) {
+      let actionBySkill;
       if (skillName == "Q") {
         actionBySkill = this.btnQ();
       }
@@ -23,7 +24,7 @@ class Hero {
       if (skillName == "E") {
         actionBySkill = this.btnE();
       }
-      if (skillName == "") {
+      if (skillName == "R") {
         actionBySkill = this.btnR();
       }
       this.mana -= actionBySkill.mana;
@@ -50,18 +51,8 @@ class HeroA extends Hero {
     return {
       mana: 3,
       action: function () {
-        if (this.health < this.fullHealth - 10) {
-          this.health += 10;
-        }
-        if (this.health >= this.fullHealth - 10) {
-          this.health = this.fullHealth;
-        }
-        if (this.mana < this.fullMana - 5) {
-          this.mana += 5;
-        }
-        if (this.man >= this.fullMana - 5) {
-          this.mana = this.fullMana;
-        }
+        this.health = Math.min(this.health + 10, this.fullHealth);
+        this.mana = Math.min(this.mana + 5, this.fullMana);
       },
     };
   }
@@ -69,7 +60,7 @@ class HeroA extends Hero {
     return {
       mana: 5,
       action: function (targets) {
-        if (targets.lenght > 0) {
+        if (len > 0) {
           targets[0].health -= 30;
         }
       },
@@ -105,12 +96,11 @@ class HeroB extends Hero {
     return {
       mana: 3,
       action: function (targets) {
-        if (targets.lenght == 1) {
+        if (len >= 1) {
           targets[0].health -= 10;
-        }
-        if (targets.lenght >= 2) {
-          targets[0].health -= 10;
-          targets[1].health -= 10;
+          if (len >= 2) {
+            targets[1].health -= 10;
+          }
         }
       },
     };
@@ -119,18 +109,8 @@ class HeroB extends Hero {
     return {
       mana: 5,
       action: function () {
-        if (this.health < this.fullHealth - 10) {
-          this.health += 10;
-        }
-        if (this.health >= this.fullHealth - 10) {
-          this.health = this.fullHealth;
-        }
-        if (this.mana < this.fullMana - 5) {
-          this.mana += 5;
-        }
-        if (this.man >= this.fullMana - 5) {
-          this.mana = this.fullMana;
-        }
+        this.health = Math.min(this.health + 20, this.fullHealth);
+        this.mana = Math.min(this.mana + 5, this.fullMana);
       },
     };
   }
@@ -138,11 +118,9 @@ class HeroB extends Hero {
     return {
       mana: 0,
       action: function () {
-        if (targets.lenght > 0) {
-          if (targets.length > 0) {
-            targets[0].health -= 50;
-            this.mana = this.fullMana;
-          }
+        if (len > 0) {
+          targets[0].health -= 50;
+          this.mana = this.fullMana;
         }
       },
     };
