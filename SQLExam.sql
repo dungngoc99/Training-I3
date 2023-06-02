@@ -13,8 +13,7 @@ Id, Name, UnitName, CategoryId, CategoryName
 */
 select pd.Id, pd.Name, pd.UnitName, pd.CategoryId, pc.Name as CategoryName
 from dbo.Product as pd 
-join dbo.ProductCategory as pc
-on pd.IsDisabled = 1
+join dbo.ProductCategory as pc on pd.IsDisabled = 0
 where pd.CategoryId = pc.Id
 
 
