@@ -50,7 +50,7 @@ ProductId, ProductName, TotalQuantityInCart
 select 
 	p.Id,
 	p.Name,
-	coalesce(sum(cd.Quantity),0)
+	coalesce(sum(cd.Quantity),0) as TotalQuantityInCart
 from 
 	Product p
 	left join CartDetail cd on p.Id = cd.ProductId
