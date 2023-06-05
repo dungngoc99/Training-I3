@@ -103,6 +103,18 @@ from
 	pc. Id, pc. Name
 order by 
 	NumberOfProduct desc
+------------------------------------
+select 
+	pc.Id as CategoryId, 
+	pc.Name as CategoryName,
+	coalesce(count(p.ID),0) as NumberOfProduct
+from 
+	ProductCategory pc
+	left join Product p on p.CategoryId = pc.Id
+	group by 
+	pc. Id, pc. Name
+order by 
+	NumberOfProduct desc
 
 
 /*
