@@ -50,7 +50,7 @@ ProductId, ProductName, TotalQuantityInCart
 select 
 	p.Id,
 	p.Name,
-	coalesce(sum(cd.Quantity),0) as TotalQuantityInCart
+	isnull(sum(cd.Quantity),0) as TotalQuantityInCart
 from 
 	Product p
 	left join CartDetail cd on p.Id = cd.ProductId
@@ -95,7 +95,7 @@ CategoryId, CategoryName, NumberOfProduct
 select 
 	pc.Id as CategoryId, 
 	pc.Name as CategoryName,
-	coalesce(count(p.ID),0) as NumberOfProduct
+	isnull(count(p.ID),0) as NumberOfProduct
 from 
 	Product p
 	right join ProductCategory pc on p.CategoryId = pc.Id
@@ -107,7 +107,7 @@ order by
 select 
 	pc.Id as CategoryId, 
 	pc.Name as CategoryName,
-	coalesce(count(p.ID),0) as NumberOfProduct
+	isnull(count(p.ID),0) as NumberOfProduct
 from 
 	ProductCategory pc
 	left join Product p on p.CategoryId = pc.Id
@@ -124,7 +124,7 @@ CategoryId, CategoryName, TotalPrice
 select 
 	pc.Id as CategoryId, 
 	pc. Name as CategoryName, 
-	coalesce(SUM(cd.Quantity * p.UnitPrice),0) as TotalPrice
+	isnull(SUM(cd.Quantity * p.UnitPrice),0) as TotalPrice
 from 
 	ProductCategory pc  
 	left join Product p on pc.Id =  p. CategoryId
@@ -155,7 +155,7 @@ Date, TotalPrice
 
 select 
 	CONVERT(date,c.CreatedDate) as Date, 
-	coalesce(sum(p.UnitPrice*cd.Quantity),0) as TotalPrice
+	isnull(sum(p.UnitPrice*cd.Quantity),0) as TotalPrice
 from 
 	Cart c
 	left join CartDetail as cd on c.Id = cd.CartId
