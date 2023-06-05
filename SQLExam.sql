@@ -56,7 +56,7 @@ from
 	left join CartDetail cd on p.Id = cd.ProductId
 group by 
 	p.Id,p.Name
-
+order by TotalQuantityInCart desc
 /*
 4. Truy vấn danh sách cart và tổng tiền của từng cart, sắp xếp theo số tiền giảm dần
 CartId, TotalPrice
