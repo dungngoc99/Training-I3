@@ -61,6 +61,12 @@ namespace Exam2
         public string TypeName { get; set; }
     }
 
+    public class Test
+    {
+        public string Name { get; set; }
+        public List<decimal> List { get; set; }
+    }
+
     class Program
     {
         public void Main(string[] args)
@@ -73,45 +79,64 @@ namespace Exam2
             var orders = new List<Order>();
             var subfoods = new List<SubFood>();
             var foodtype = new List<FoodType>();
+            var tests = new List<Test>();
             // 1.Tìm 5 người đã like nhà hàng nhiều nhất          
 
-            var top5LikesUser = likesRes
+            var top5LikesGroups = likesRes
                 .GroupBy(x => x.UserId)
-                .OrderByDescending(a => a.Count())
-                .Select(g => new
-                {
-                    UserId = g.Key,
-                    count = g.Count()
-                })
-                .GroupBy(x => x.count)
-                .Take(5);
-
-            //2.Tìm 2 nhà hàng có lượt like nhiều nhất.     
-
-            var top2ResWasLiked = likesRes
-               .GroupBy(x => x.ResId)
-               .OrderByDescending(a => a.Count())
-               .Select(g => new
-               {
-                   ResId = g.Key,
-                   count = g.Count()
-               })
-               .GroupBy(x => x.count)
-               .Take(2);
-
-
-
-            //3.Tìm người đã đặt hàng nhiều nhất.
-            var userOrdersMost = orders
-                .GroupBy(x => x.UserId)
-                .OrderByDescending(a => a.Count())
                 .Select(g => new
                 {
                     UserId = g.Key,
                     Count = g.Count(),
                 })
                 .GroupBy(x => x.Count)
-                .Take(1);
+                .OrderByDescending(a => a.Key)
+                .Take(5)
+                .SelectMany(g => g)
+                .ToList();
+
+            // Flatten a collection
+            //SelectMany -> dau vao la list 
+            //var top5 = top5LikesGroups.SelectMany(x => x);
+            //var top5_2 = from g in top5LikesGroups
+            //             from u in g
+            //             select u;
+
+            //var test = tests.SelectMany(x => x.List);
+            //var test_2 = from t in tests
+            //             from i in t.List
+            //             select i;
+
+            //2.Tìm 2 nhà hàng có lượt like nhiều nhất.     
+
+            var top2ResWasLiked = likesRes
+               .GroupBy(x => x.ResId)
+               .Select(g => new
+               {
+                   ResId = g.Key,
+                   Count = g.Count(),
+               })
+               .GroupBy(x => x.Count)
+               .OrderByDescending(a => a.Key)
+               .Take(2)
+               .SelectMany(x => x)
+               .ToList();
+
+
+
+            //3.Tìm người đã đặt hàng nhiều nhất.
+            var userOrdersMost = orders
+                .GroupBy(x => x.UserId)
+                .Select(g => new
+                {
+                    UserId = g.Key,
+                    Count = g.Count(),
+                })
+                .GroupBy(x => x.Count)
+                .OrderByDescending(a => a.Key)
+                .Take(1)
+                .SelectMany(x => x)
+                .ToList();
 
             //4.Tìm người dùng không hoạt động trong hệ thống (không đặt hàng, không like, không đánh giá nhà hàng).
 
@@ -122,10 +147,9 @@ namespace Exam2
                             )
                 .Select(g => new
                 {
-                    UserId = g.UserId,
-                    FullName = g.FullName
+                    g.UserId,
+                    g.FullName,
                 }).ToList();
-
 
 
             //5.Tính trung bình sub_food 
