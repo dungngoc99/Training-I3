@@ -151,12 +151,28 @@ namespace Exam2
                     g.FullName,
                 }).ToList();
 
+            //DefaultIfEmpty:            
+            //var inactiveUser_LeftJoin = from u in users
+            //                            join o in orders on u.UserId equals o.UserId into o1
+            //                            from o in o1.DefaultIfEmpty()
+            //                            where o == null
+            //                            select u;
+            var inactiveUserByLeftJoin = from u in users
+                                         join o in orders on u.UserId equals o.UserId into ou
+                                         from o in ou.DefaultIfEmpty()
+                                         join l in likesRes on u.UserId equals l.UserId into ul
+                                         from l in ul.DefaultIfEmpty()
+                                         join r in ratesRes on u.UserId equals r.UserId into ur
+                                         from r in ur.DefaultIfEmpty()
+                                         where o == null && u == null && r == null
+                                         select u;
+
 
             //5.Tính trung bình sub_food 
 
             var Avg = subfoods.Average(a => a.SubPrice);
-
         }
+
     }
 }
 

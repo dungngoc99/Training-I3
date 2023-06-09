@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Dung\\Training-I3\\Linq\\Exam\\Exam.csproj": {}
+    "C:\\Dung\\Training-I3\\5.Linq\\Exam\\Exam.csproj": {}
   },
   "projects": {
-    "C:\\Dung\\Training-I3\\Linq\\Exam\\Exam.csproj": {
+    "C:\\Dung\\Training-I3\\5.Linq\\Exam\\Exam.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dung\\Training-I3\\Linq\\Exam\\Exam.csproj",
+        "projectUniqueName": "C:\\Dung\\Training-I3\\5.Linq\\Exam\\Exam.csproj",
         "projectName": "Exam",
-        "projectPath": "C:\\Dung\\Training-I3\\Linq\\Exam\\Exam.csproj",
+        "projectPath": "C:\\Dung\\Training-I3\\5.Linq\\Exam\\Exam.csproj",
         "packagesPath": "C:\\Users\\Dang\\.nuget\\packages\\",
-        "outputPath": "C:\\Dung\\Training-I3\\Linq\\Exam\\obj\\",
+        "outputPath": "C:\\Dung\\Training-I3\\5.Linq\\Exam\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
